@@ -56,7 +56,7 @@ case 3: if log_b(a) < k then T(n) = if  P>=0 then theta(n^k log^p n) else theta(
 """
 
 """ Merge Sort Analysis:
-
+recursive + work done outside recursion
 T(n) = 2T(n/2) + f(n)
 f(n) = theta(n) (merging two sorted halves)
 a = 2, b = 2, k = 1, p = 0
