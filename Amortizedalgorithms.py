@@ -58,5 +58,47 @@ print("Amortized cost per append:", sum(costs) / len(costs))
 
 """
 Accounting method:
+using multipop stack :
+
+Multipop Stack - Amortized Analysis (Accounting Method)
+-------------------------------------------------------
+
+We have three operations:
+1. PUSH(x)       -> Put element x on top of the stack
+2. POP()         -> Remove top element
+3. MULTIPOP(k)   -> Pop up to k elements (or fewer if stack has less)
+
+Worst-case for MULTIPOP is O(n) if k = n, but amortized analysis
+shows that over a sequence of m operations, the average cost per
+operation is O(1).
+
+Accounting Method:
+------------------
+We assign an *amortized* cost to operations, possibly higher than
+their actual cost, and store "credits" to pay for future work.
+
+Plan:
+- PUSH(x): Charge 2 units.
+    - 1 unit pays for the actual push.
+    - 1 unit is saved as credit *on the element* to pay for its eventual pop.
+- POP(): Charge 0 units (already paid for by the element's stored credit).
+- MULTIPOP(k): Charge 0 units (each popped element was prepaid when pushed).
+
+Why cost = 2 for PUSH?
+----------------------
+When we push an element, we know it will be popped exactly once
+(sometime in the future, either by POP or MULTIPOP). By charging
+2 units now, we cover:
+    - The immediate push cost (1 unit).
+    - The future pop cost (1 unit), stored as credit.
+
+Because each element gets exactly one extra credit for its pop,
+MULTIPOP operations have no unpaid work left to do.
+
+Amortized Cost:
+---------------
+Over m operations, total charged cost ≤ 2 * (number of pushes) = O(m),
+so average per operation is O(1) amortized.
+
 
 """
