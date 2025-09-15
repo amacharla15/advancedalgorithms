@@ -20,4 +20,3 @@ Combining those two paths naturally forms a directed cycle
 If no cycles exist in that subgraph, it’s acyclic → you 
 can’t have mutual reachability except for the trivial “reach yourself” case.
 """
-
