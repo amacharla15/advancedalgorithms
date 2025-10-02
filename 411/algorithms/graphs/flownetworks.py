@@ -23,6 +23,4 @@ The flow must satisfy the following conditions:
     a residual graph is a modified version of the original flow network that represents 
     the remaining capacity for additional flow.
 
-
-
 """
